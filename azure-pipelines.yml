@@ -27,4 +27,5 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/azure'
     environmentServiceNameAzureRM: 'azuredevops-azure-tf-connection'
