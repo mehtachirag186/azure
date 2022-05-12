@@ -22,3 +22,9 @@ steps:
     backendAzureRmStorageAccountName: 'azuredevopsremotestatetf'
     backendAzureRmContainerName: 'azuredevopsremotestatetf'
     backendAzureRmKey: 'remotestate.tfstate'
+
+- task: TerraformTaskV2@2
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'azuredevops-azure-tf-connection'
