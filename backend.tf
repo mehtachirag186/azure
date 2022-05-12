@@ -1,7 +1,3 @@
-provider "azurerm" {
-  region = "us-east-1"
-  //version = "~> 2.46"
-}
 
 terraform {
   backend "azurerm" {
