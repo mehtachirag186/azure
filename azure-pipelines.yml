@@ -27,5 +27,4 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'apply'
-    workingDirectory: '$(System.DefaultWorkingDirectory)'
-    environmentServiceNameAzureRM: 'azuredevops-azure-tf-connection'
+    environmentServiceNameAzureRM: 'Free Trial(d269918c-3797-49c4-b125-b1bc5815ad18)'
