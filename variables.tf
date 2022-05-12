@@ -3,7 +3,7 @@
 
 } */
 variable "region" {
-  default = "eastus"
+  default = "East US"
 }
 variable "resource_group" {
   default = "rg-spservers"
