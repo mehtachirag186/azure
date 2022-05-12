@@ -10,6 +10,12 @@ resource "azurerm_resource_group" "Vnet-SpServers" {
  
 }
 
+resource "azurerm_resource_group" "aks" {
+  name = "${var.resource_group}-aks "
+  location = var.region
+ 
+}
+
 resource "azurerm_virtual_network" "SP-Virtual-Network" {
   name = var.Vnet
   location = var.region

@@ -15,3 +15,7 @@ variable "ServerName" {
 variable "loadbalancer" {
   default = "sp2019elb"
 }
+variable "aks" {
+  default = "aks-cluster"
+}
+
