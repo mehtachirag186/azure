@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "SPservers" {
 }
 
 resource "azurerm_resource_group" "Vnet-SpServers" {
-  name = ${var.resource_group}-Vnet
+  name = "${var.resource_group}-Vnet"
   location = var.region
  
 }
