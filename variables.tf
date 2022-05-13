@@ -1,5 +1,5 @@
 variable "region" {
-  default = "East US"
+  default = "northeurope"
 }
 variable "resource_group" {
   default = "rg-spservers"
