@@ -37,7 +37,7 @@ resource "azurerm_virtual_network" "SP-Virtual-Network" {
 
 }
 
-/* resource "azurerm_virtual_machine" "SP_VMs" {
+resource "azurerm_virtual_machine" "SP_VMs" {
   count = 11
   depends_on = [
     azurerm_availability_set.SP_wfe_AS
@@ -47,8 +47,7 @@ resource "azurerm_virtual_network" "SP-Virtual-Network" {
   resource_group_name = "${var.loadbalancer}-RG"
   vm_size             = "Standard_DS1_v2"
   availability_set_id = var.avset.id
-  network_interface_ids = [azurerm_virtual_network.main.id]
-  #network_interface_ids =
+  network_interface_ids = ["azurerm_virtual_network.Vnet-SpServers.id"]
   os_profile {
     computer_name  = "${var.ServerName}-${count.index}-WFE"
     admin_username = "Administrator"
@@ -63,5 +62,5 @@ resource "azurerm_virtual_network" "SP-Virtual-Network" {
 
   }
 
-} */
+}
 
