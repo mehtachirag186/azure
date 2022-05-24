@@ -44,7 +44,7 @@ resource "azurerm_virtual_machine" "SP_VMs" {
   ]
   name                  = "${var.ServerName}-${count.index}"
   location              = var.region
-  resource_group_name   = azurerm_resource_group.SPservers
+  resource_group_name   = azurerm_resource_group.SPservers.name
   vm_size               = "Standard_DS1_v2"
   availability_set_id   = azurerm_availability_set.SP_wfe_AS.id
   network_interface_ids = [azurerm_virtual_network.SP-Virtual-Network.id]
