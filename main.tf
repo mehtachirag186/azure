@@ -48,11 +48,12 @@ resource "azurerm_subnet" "SP-Subnet" {
 
 }
 
-resource "azurerm_network_interface" "example" {
+resource "azurerm_network_interface" "sp-nic" {
   #count = 11
   name                = var.nic
   location            = var.region
-  resource_group_name = azurerm_resource_group.Vnet-SpServers
+  resource_group_name = azurerm_resource_group.Vnet-SpServers.name
+
 
   ip_configuration {
     #count = 11
