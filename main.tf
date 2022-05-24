@@ -103,7 +103,7 @@ resource "azurerm_windows_virtual_machine" "sp-vm" {
   name                = "${var.ServerName}-${count.index}"
   resource_group_name = azurerm_resource_group.SPservers.name
   location            = var.region
-  size                = "Standard_F2"
+  size                = "Standard_D2as_v4"
   admin_username      = "Administrator"
   admin_password      = "abcd1234!"
   network_interface_ids = [
