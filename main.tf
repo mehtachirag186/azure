@@ -47,7 +47,7 @@ resource "azurerm_virtual_machine" "SP_VMs" {
   resource_group_name   = "${var.loadbalancer}-RG"
   vm_size               = "Standard_DS1_v2"
   availability_set_id   = azurerm_availability_set.SP_wfe_AS.id
-  network_interface_ids = ["azurerm_virtual_network.Vnet-SpServers.id"]
+  network_interface_ids = [azurerm_virtual_network.SP-Virtual-Network.id]
   os_profile {
     computer_name  = "${var.ServerName}-${count.index}-WFE"
     admin_username = "Administrator"
