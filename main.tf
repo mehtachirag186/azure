@@ -37,7 +37,16 @@ resource "azurerm_virtual_network" "SP-Virtual-Network" {
 
 }
 
-resource "azurerm_virtual_machine" "SP_VMs" {
+resource "azurerm_subnet" "SP-Subnet" {
+  name                 = var.subnet
+  resource_group_name  = azurerm_resource_group.Vnet-SpServers.name
+  virtual_network_name = azurerm_virtual_network.SP-Virtual-Network.name
+  address_prefixes     = ["10.0.2.0/24"]
+
+
+}
+
+/* resource "azurerm_virtual_machine" "SP_VMs" {
   count = 11
   depends_on = [
     azurerm_availability_set.SP_wfe_AS
@@ -65,6 +74,35 @@ resource "azurerm_virtual_machine" "SP_VMs" {
   os_profile_windows_config {
     enable_automatic_upgrades = false
   }
+ 
+ storage_image_reference {
+   
+ }
 
+} */
+
+resource "azurerm_windows_virtual_machine" "example" {
+  count               = 11
+  name                = "${var.ServerName}-${count.index}"
+  resource_group_name = azurerm_resource_group.SPservers.name
+  location            = var.region
+  size                = "Standard_F2"
+  admin_username      = "Administrator"
+  admin_password      = "abcd1234!"
+  network_interface_ids = [
+    azurerm_virtual_network.SP-Virtual-Network.id
+  ]
+
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
+
+  source_image_reference {
+    publisher = "MicrosoftWindowsServer"
+    offer     = "WindowsServer"
+    sku       = "2019-Datacenter"
+    version   = "latest"
+  }
 }
 
