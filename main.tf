@@ -63,43 +63,8 @@ resource "azurerm_network_interface" "sp-nic" {
   }
 }
 
-/* resource "azurerm_virtual_machine" "SP_VMs" {
-  count = 11
-  depends_on = [
-    azurerm_availability_set.SP_wfe_AS
-  ]
-  name                  = "${var.ServerName}-${count.index}"
-  location              = var.region
-  resource_group_name   = azurerm_resource_group.SPservers.name
-  vm_size               = "Standard_DS1_v2"
-  availability_set_id   = azurerm_availability_set.SP_wfe_AS.id
-  network_interface_ids = [azurerm_virtual_network.SP-Virtual-Network.id]
-  os_profile {
-    computer_name  = "${var.ServerName}-${count.index}-WFE"
-    admin_username = "Administrator"
-    admin_password = "abc1234"
-
-  }
-  storage_os_disk {
-    name              = "myosdisk1"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = "Standard_LRS"
-
-  }
-
-  os_profile_windows_config {
-    enable_automatic_upgrades = false
-  }
- 
- storage_image_reference {
-   
- }
-
-} */
-
 resource "azurerm_windows_virtual_machine" "sp-vm" {
-  count               = 11
+  count               = 3
   name                = "${var.ServerName}-${count.index}"
   resource_group_name = azurerm_resource_group.SPservers.name
   location            = var.region
