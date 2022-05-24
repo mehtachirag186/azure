@@ -64,7 +64,7 @@ resource "azurerm_network_interface" "sp-nic" {
 }
 
 resource "azurerm_windows_virtual_machine" "sp-vm" {
-  count               = 3
+  count               = 1
   name                = "${var.ServerName}-${count.index}"
   resource_group_name = azurerm_resource_group.SPservers.name
   location            = var.region
