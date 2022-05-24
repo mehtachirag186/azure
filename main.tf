@@ -104,7 +104,7 @@ resource "azurerm_windows_virtual_machine" "sp-vm" {
   resource_group_name = azurerm_resource_group.SPservers.name
   location            = var.region
   size                = "Standard_D2as_v4"
-  admin_username      = "Administrator"
+  admin_username      = "chiragmehta"
   admin_password      = "abcd1234!"
   network_interface_ids = [
     azurerm_network_interface.sp-nic.id
