@@ -16,6 +16,19 @@ resource "azurerm_resource_group" "aks" {
 
 }
 
+resource "azurerm_resource_group" "sp-availability-set" {
+  name     = "${var.resource_group}-availabilityset"
+  location = var.region
+
+}
+
+resource "azurerm_resource_group" "load-balancer" {
+  name     = "${var.resource_group}-loadbalancer"
+  location = var.region
+
+}
+
+
 resource "azurerm_virtual_network" "SP-Virtual-Network" {
   name                = var.Vnet
   location            = var.region
