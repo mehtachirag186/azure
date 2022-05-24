@@ -98,7 +98,7 @@ resource "azurerm_network_interface" "sp-nic" {
 
 } */
 
-resource "azurerm_windows_virtual_machine" "example" {
+resource "azurerm_windows_virtual_machine" "sp-vm" {
   count               = 11
   name                = "${var.ServerName}-${count.index}"
   resource_group_name = azurerm_resource_group.SPservers.name
@@ -107,7 +107,7 @@ resource "azurerm_windows_virtual_machine" "example" {
   admin_username      = "Administrator"
   admin_password      = "abcd1234!"
   network_interface_ids = [
-    azurerm_virtual_network.SP-Virtual-Network.id
+    azurerm_network_interface.sp-nic.id
   ]
 
   os_disk {
