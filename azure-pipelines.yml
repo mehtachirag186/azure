@@ -28,3 +28,9 @@ steps:
     provider: 'azurerm'
     command: 'apply'
     environmentServiceNameAzureRM: 'Free Trial(d269918c-3797-49c4-b125-b1bc5815ad18)'
+
+- task: TerraformTaskV3@3
+  inputs:
+    provider: 'azurerm'
+    command: 'destroy'
+    environmentServiceNameAzureRM: 'azuredevops-azure-tf-connection'
