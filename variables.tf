@@ -7,7 +7,16 @@ variable "resource_group" {
 
 variable "Vnet" {
   default = "SP-Virtual-Network"
+}
 
+variable "subnet" {
+  default = "SP-subnet"
+}
+variable "nic" {
+  default = "nic"
+}
+variable "ip" {
+  default = "ip"
 }
 variable "ServerName" {
   default = "SP2k19"

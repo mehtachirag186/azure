@@ -42,8 +42,24 @@ resource "azurerm_subnet" "SP-Subnet" {
   resource_group_name  = azurerm_resource_group.Vnet-SpServers.name
   virtual_network_name = azurerm_virtual_network.SP-Virtual-Network.name
   address_prefixes     = ["10.0.2.0/24"]
+  depends_on = [
+    azurerm_virtual_network.SP-Virtual-Network
+  ]
 
+}
 
+resource "azurerm_network_interface" "example" {
+  #count = 11
+  name                = var.nic
+  location            = var.region
+  resource_group_name = azurerm_resource_group.Vnet-SpServers
+
+  ip_configuration {
+    #count = 11
+    name                          = var.ip
+    subnet_id                     = azurerm_subnet.SP-Subnet.id
+    private_ip_address_allocation = "Dynamic"
+  }
 }
 
 /* resource "azurerm_virtual_machine" "SP_VMs" {
