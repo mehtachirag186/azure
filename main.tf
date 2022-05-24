@@ -62,5 +62,9 @@ resource "azurerm_virtual_machine" "SP_VMs" {
 
   }
 
+  os_profile_windows_config {
+    enable_automatic_upgrades = false
+  }
+
 }
 
